@@ -1,5 +1,7 @@
 node() {
 
+  def commitID = "123456"
+
   openshift.verbose(true)
 
   openshift.withCluster() {
@@ -45,6 +47,8 @@ node() {
               returnStdout: true
       ).trim()
       echo "imageHash: " + imageHash
+
+      openshift.tag("continuous-infra/rpmbuild@" + imageHash, "continuous-infra/rpmbuild:" + commitID)
 
     }
   }
