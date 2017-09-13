@@ -1,4 +1,7 @@
 node() {
+
+  openshift.verbose(true)
+
   openshift.withCluster() {
     echo "Hello from default project: ${openshift.project()}"
     result = openshift.startBuild("rpmbuild", "--commit", "refs/pull/281/head", "--wait")
