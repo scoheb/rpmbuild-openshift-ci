@@ -41,7 +41,7 @@ node() {
       echo "Operation output: " + out2
 
       def imageHash = sh (
-              script: "echo ${out2} | grep 'Image Digest:' | cut -f2 -d:",
+              script: "echo \"${out2}\" | grep 'Image Digest:' | cut -f2 -d:",
               returnStdout: true
       ).trim()
       echo "imageHash: " + imageHash
