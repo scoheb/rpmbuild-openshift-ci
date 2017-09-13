@@ -48,7 +48,8 @@ node() {
       ).trim()
       echo "imageHash: " + imageHash
 
-      openshift.tag("continuous-infra/rpmbuild@" + imageHash, "continuous-infra/rpmbuild:" + commitID)
+      def imageHash2 = "1111"
+      openshift.tag("continuous-infra/rpmbuild@" + imageHash2, "continuous-infra/rpmbuild:" + commitID)
 
     }
   }
