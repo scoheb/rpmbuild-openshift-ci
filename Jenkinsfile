@@ -19,6 +19,25 @@ node() {
     echo "Reference information: ${result.actions[0].reference}"
 
     // Aggregate output from all sub-actions
-    echo "Operation output: ${result.out.trim()}"
+    def out = result.out.trim()
+    echo "Operation output: " + out
+
+    def imageStr = openshift.describe(out)
+    // The name of the operation performed (i.e. "delete")
+    echo "Overall status: ${imageStr.operation}"
+
+    // The number of sub-actions run
+    echo "Overall status: ${imageStr.status}"
+
+    // First OpenShift command which was executed
+    echo "Actions performed: ${imageStr.actions[0].cmd}"
+
+    // Additional command reference information
+    echo "Reference information: ${imageStr.actions[0].reference}"
+
+    // Aggregate output from all sub-actions
+    def out2 = imageStr.out.trim()
+    echo "Operation output: " + out2
+
   }
 }
