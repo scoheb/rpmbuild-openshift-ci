@@ -39,6 +39,13 @@ node() {
       // Aggregate output from all sub-actions
       def out2 = imageStr.out.trim()
       echo "Operation output: " + out2
+
+      def imageHash = sh (
+              script: "echo ${out2} | grep 'Image Digest:' | cut -f2 -d:",
+              returnStdout: true
+      ).trim()
+      echo "imageHash: " + imageHash
+
     }
   }
 }
