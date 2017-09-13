@@ -19,6 +19,6 @@ node() {
     echo "Reference information: ${result.actions[0].reference}"
 
     // Aggregate output from all sub-actions
-    echo "Operation output: ${result.out}"
+    echo "Operation output: ${result.out.trim()}"
   }
 }
