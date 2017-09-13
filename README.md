@@ -1,0 +1,1 @@
+# rpmbuild-openshift-ci
