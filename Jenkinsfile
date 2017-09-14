@@ -7,7 +7,7 @@ node() {
   openshift.withCluster() {
     openshift.withProject("continuous-infra") {
       //def result = openshift.selector("bc").startBuild("rpmbuild", "--commit", "refs/pull/281/head", "--wait")
-      def result = openshift.startBuild("rpmbuild", "--commit", "refs/pull/281/head", "--wait")
+      def result = openshift.startBuild("rpmbuild", "--commit", "refs/pull/281/head", "--wait", "--follow")
 
       // The name of the operation performed (i.e. "delete")
       echo "Overall status: ${result.operation}"
@@ -51,6 +51,7 @@ node() {
       def imageHash2 = "1111"
       openshift.tag("continuous-infra/rpmbuild@" + imageHash2, "continuous-infra/rpmbuild:" + commitID)
 
+      // now trigger stage...
     }
   }
 }
